@@ -91,7 +91,7 @@ STATIC_ROOT = BASE_DIR / 'staticfiles' # 本番用
 # settings.py に追加
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",  # Reactが動いている住所
-    "http://127.0.0.1:5173",
+    "https://family-calendar-frontend.onrender.com",
 ]
 CORS_ALLOW_CREDENTIALS = True
 
