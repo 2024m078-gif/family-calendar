@@ -2,6 +2,9 @@ import os
 from pathlib import Path
 import dj_database_url
 from dotenv import load_dotenv
+from django.contrib.auth import get_user_model
+from django.db.models.signals import post_migrate
+from django.dispatch import receiver
 
 # 1. プロジェクトの基本パスを設定 (これが抜けていました！)
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -100,3 +103,11 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 CSRF_TRUSTED_ORIGINS = [
     'https://family-calendar-w979.onrender.com',
 ]
+
+
+@receiver(post_migrate)
+def create_admin_user(sender, **kwargs):
+    User = get_user_model()
+    if not User.objects.filter(username='admin').exists():
+        User.objects.create_superuser('admin', 'admin@example.com', 'password123')
+        print("管理者ユーザー 'admin' を作成しました（パスワード: password123）")
