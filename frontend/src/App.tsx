@@ -56,7 +56,7 @@ const addFamilyMember = async () => {
   if (name) {
     try {
       // 1. Django側にユーザー作成を依頼
-      const response = await fetch('http://127.0.0.1:8000/api/users/create/', {
+      const response = await fetch('https://family-calendar-w979.onrender.com/api/users/create/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username: name }),
@@ -97,7 +97,7 @@ const addFamilyMember = async () => {
 
   const fetchEvents = async () => {
     try {
-      const response = await fetch('http://127.0.0.1:8000/api/events/');
+      const response = await fetch('https://family-calendar-w979.onrender.com/api/events/');
       const data = await response.json();
       setEvents(data);
     } catch (error) {
@@ -127,7 +127,7 @@ const addFamilyMember = async () => {
       };
 
       try {
-        const response = await fetch('http://127.0.0.1:8000/api/events/', {
+        const response = await fetch('https://family-calendar-w979.onrender.com/api/events/', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(newEvent),
@@ -159,7 +159,9 @@ const addFamilyMember = async () => {
     `;
 
     if (window.confirm(message)) {
-      await fetch(`http://127.0.0.1:8000/api/events/${clickInfo.event.id}/`, { method: 'DELETE' });
+      await fetch(`https://family-calendar-w979.onrender.com/api/events/${clickInfo.event.id}/`, { 
+        method: 'DELETE' 
+      });
       clickInfo.event.remove();
     }
   };
