@@ -89,5 +89,6 @@ STATIC_ROOT = BASE_DIR / 'staticfiles' # 本番用
 
 # 9. CORS設定
 CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_CREDENTIALS = True
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
