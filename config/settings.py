@@ -109,5 +109,5 @@ CSRF_TRUSTED_ORIGINS = [
 def create_admin_user(sender, **kwargs):
     User = get_user_model()
     if not User.objects.filter(username='admin').exists():
-        User.objects.create_superuser('admin', 'admin@example.com', 'password123')
-        print("管理者ユーザー 'admin' を作成しました（パスワード: password123）")
+        User.objects.create_superuser('admin', 'admin@example.com', 'tabeta123')
+        print("管理者ユーザー 'admin' を作成しました（パスワード: tabeta123）")
